@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native"
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native"
 import Slider from "@react-native-community/slider"
 
 export default function App() {
@@ -13,13 +13,19 @@ export default function App() {
       <View style={styles.main}>
         <Text style={styles.mainText}>14 Characters</Text>
         <Slider
-          style={{ height: 56 }}
+          style={styles.slider}
           minimumValue={8}
           maximumValue={40}
           minimumTrackTintColor="#58b1e8"
           maximumTrackTintColor="#1295e6"
           thumbTintColor="#d12446"
         />
+
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.textButton}>
+            Generate password
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -50,12 +56,28 @@ const styles = StyleSheet.create({
   main: {
     backgroundColor: '#ddeeff44',
     paddingVertical: 16,
+    paddingHorizontal: 8,
     width: '88%',
     borderRadius: 8
   },
   mainText: {
     color: '#def',
     textAlign: 'center',
-    fontSize: 24
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
+  slider: {
+    height: 56,
+    marginVertical: 16
+  },
+  button: {
+    borderRadius: 999,
+    backgroundColor: '#6fc5ed',
+    alignSelf: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+  },
+  textButton: {
+    fontSize: 18,
   }
 });
