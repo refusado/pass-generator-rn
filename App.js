@@ -1,7 +1,13 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native"
 import Slider from "@react-native-community/slider"
+import { useState } from "react";
 
 export default function App() {
+  const [charsSize, setCharsSize] = useState(14);
+  const generatePassword = () => {
+    // handle button click
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Pass Generator</Text>
@@ -11,17 +17,19 @@ export default function App() {
       />
 
       <View style={styles.main}>
-        <Text style={styles.mainText}>14 Characters</Text>
+        <Text style={styles.mainText}>{charsSize}/42 Characters</Text>
         <Slider
           style={styles.slider}
-          minimumValue={8}
-          maximumValue={40}
+          minimumValue={4}
+          maximumValue={42}
           minimumTrackTintColor="#58b1e8"
           maximumTrackTintColor="#1295e6"
           thumbTintColor="#def"
+          value={charsSize}
+          onValueChange={(value) => setCharsSize(value.toFixed(0))}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={generatePassword}>
           <Text style={styles.textButton}>
             Generate password
           </Text>
