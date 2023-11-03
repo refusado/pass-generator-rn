@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 8,
     width: '88%',
-    borderRadius: 8
+    borderRadius: 6
   },
   mainText: {
     color: '#def',
