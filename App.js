@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native"
 import Slider from "@react-native-community/slider"
 import { useState } from "react";
+import generatePassword from "./GeneratorAlgorithm";
 
 export default function App() {
   const [charsSize, setCharsSize] = useState(14);
-  const generatePassword = () => {
-    // handle button click
+  const handleButtonClick = () => {
+    const pass = generatePassword(charsSize);
+    console.log(pass);
   }
 
   return (
@@ -29,7 +31,7 @@ export default function App() {
           onValueChange={(value) => setCharsSize(value.toFixed(0))}
         />
 
-        <TouchableOpacity style={styles.button} onPress={generatePassword}>
+        <TouchableOpacity style={styles.button} onPress={handleButtonClick}>
           <Text style={styles.textButton}>
             Generate password
           </Text>
