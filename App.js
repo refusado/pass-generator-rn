@@ -18,7 +18,7 @@ export default function App() {
           maximumValue={40}
           minimumTrackTintColor="#58b1e8"
           maximumTrackTintColor="#1295e6"
-          thumbTintColor="#d12446"
+          thumbTintColor="#def"
         />
 
         <TouchableOpacity style={styles.button}>
@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
   },
   title: {
     backgroundColor: '#def',
+    color: '#191f21',
     fontSize: 16,
     marginBottom: 16,
     paddingHorizontal: 16,
     paddingVertical: 4,
-    borderRadius: 4
+    borderRadius: 6
   },
   logo: {
     resizeMode: 'contain',
@@ -74,10 +75,12 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     backgroundColor: '#6fc5ed',
     alignSelf: 'center',
-    paddingHorizontal: 24,
+    paddingHorizontal: 32,
     paddingVertical: 16,
+    elevation: 5
   },
   textButton: {
     fontSize: 18,
+    color: '#191f21',
   }
 });
