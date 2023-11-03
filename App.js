@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native"
+import { StyleSheet, Text, View, Image, TouchableOpacity, Modal } from "react-native"
 import Slider from "@react-native-community/slider"
 import { useState } from "react";
 import generatePassword from "./GeneratorAlgorithm";
+import PasswordModal from "./src/components/PasswordModal";
 
 export default function App() {
+  const [passValue, setPassValue] = useState();
   const [charsSize, setCharsSize] = useState(14);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const handleButtonClick = () => {
     const pass = generatePassword(charsSize);
-    console.log(pass);
+    setPassValue(pass);
+    setIsModalVisible(true);
   }
 
   return (
@@ -37,6 +42,14 @@ export default function App() {
           </Text>
         </TouchableOpacity>
       </View>
+
+      <Modal
+        visible={isModalVisible}
+        animationType="slide"
+        transparent={true}
+      >
+        <PasswordModal />
+      </Modal>
     </View>
   )
 }
@@ -55,7 +68,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 16,
     paddingVertical: 4,
-    borderRadius: 6
+    borderRadius: 4
   },
   logo: {
     resizeMode: 'contain',
