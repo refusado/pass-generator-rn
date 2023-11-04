@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Clipboard from "expo-clipboard";
 
-export default function PasswordModal({ closeModal, generatedPassword }) {
+export function PasswordModal({ closeModal, generatedPassword }) {
   const handleCopyPass = async () => {
     await Clipboard.setStringAsync(generatedPassword);
     // alert('Password copied.');
