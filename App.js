@@ -45,10 +45,13 @@ export default function App() {
 
       <Modal
         visible={isModalVisible}
-        animationType="slide"
+        animationType="fade"
         transparent={true}
       >
-        <PasswordModal />
+        <PasswordModal 
+          closeModal={() => setIsModalVisible(false)}
+          generatedPassword={passValue}
+        />
       </Modal>
     </View>
   )
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 16,
     paddingVertical: 4,
-    borderRadius: 4
+    borderRadius: 2
   },
   logo: {
     resizeMode: 'contain',
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingHorizontal: 32,
     paddingVertical: 16,
-    elevation: 5
+    elevation: 3
   },
   textButton: {
     fontSize: 18,
