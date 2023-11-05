@@ -24,10 +24,10 @@ export function Home() {
       />
 
       <View style={styles.main}>
-        <Text style={styles.mainText}>{charsSize}/42 Characters</Text>
+        <Text style={styles.mainText}>{charsSize} Characters</Text>
         <Slider
           style={styles.slider}
-          minimumValue={4}
+          minimumValue={8}
           maximumValue={42}
           minimumTrackTintColor="#58b1e8"
           maximumTrackTintColor="#1295e6"
@@ -59,19 +59,20 @@ export function Home() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#123',
+    // backgroundColor: '#252c3d',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
   title: {
-    backgroundColor: '#def',
+    width: '100%',
+    backgroundColor: '#b9cdeb',
     color: '#191f21',
     fontSize: 16,
     marginBottom: 16,
     paddingHorizontal: 16,
     paddingVertical: 4,
-    borderRadius: 2
+    textAlign: 'center'
   },
   logo: {
     resizeMode: 'contain',
@@ -82,13 +83,13 @@ const styles = StyleSheet.create({
 
   main: {
     backgroundColor: '#ddeeff44',
-    paddingVertical: 16,
-    paddingHorizontal: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 24,
     width: '88%',
     borderRadius: 6
   },
   mainText: {
-    color: '#def',
+    color: '#d7e6fc',
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold'
@@ -98,15 +99,16 @@ const styles = StyleSheet.create({
     marginVertical: 16
   },
   button: {
+    width: '100%',
+    alignItems: 'center',
     borderRadius: 999,
-    backgroundColor: '#6fc5ed',
+    backgroundColor: '#4b8cdb',
     alignSelf: 'center',
-    paddingHorizontal: 32,
-    paddingVertical: 16,
-    elevation: 3
+    paddingVertical: 10,
+    elevation: 1
   },
   textButton: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#191f21',
   }
 });

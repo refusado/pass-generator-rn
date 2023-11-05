@@ -4,9 +4,7 @@ import * as Clipboard from "expo-clipboard";
 export function PasswordModal({ closeModal, generatedPassword }) {
   const handleCopyPass = async () => {
     await Clipboard.setStringAsync(generatedPassword);
-    // alert('Password copied.');
-
-    closeModal();
+    alert('Password copied.');
   }
 
   return (
@@ -28,11 +26,11 @@ export function PasswordModal({ closeModal, generatedPassword }) {
             style={styles.button}
             onPress={closeModal}
           >
-            <Text style={styles.buttonText}>Back</Text>
+            <Text style={styles.buttonText}>Close</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.button, {backgroundColor: '#51a9db'}]}>
-            <Text style={styles.buttonText}>Copy</Text>
+          <TouchableOpacity style={[styles.button, {backgroundColor: '#4fa3e8'}]}>
+            <Text style={styles.buttonText}>Save pass</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -43,7 +41,7 @@ export function PasswordModal({ closeModal, generatedPassword }) {
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    backgroundColor: '#191f2188',
+    backgroundColor: '#121414aa',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#def',
+    backgroundColor: '#cddef7',
     borderRadius: 9
   },
   title: {
@@ -72,10 +70,10 @@ const styles = StyleSheet.create({
   },
 
   horizontalLine: {
-    width: 3,
-    height: 3,
-    marginVertical: 20,
-    backgroundColor: '#00000088',
+    width: '48%',
+    height: 1,
+    marginVertical: 24,
+    backgroundColor: '#00000024',
   },
 
   buttonsContainer: {
