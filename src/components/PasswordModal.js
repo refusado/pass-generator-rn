@@ -1,10 +1,17 @@
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Clipboard from "expo-clipboard";
+import useStorage from "../hooks/useStorage";
 
 export function PasswordModal({ closeModal, generatedPassword }) {
-  const handleCopyPass = async () => {
+  const { saveItem } = useStorage();
+
+  const handlePass = async () => {
     await Clipboard.setStringAsync(generatedPassword);
-    alert('Password copied.');
+    await saveItem('@passwords', generatedPassword);
+
+    closeModal();
+
+    alert('Password copied and saved.');
   }
 
   return (
@@ -14,7 +21,7 @@ export function PasswordModal({ closeModal, generatedPassword }) {
 
         <Pressable
           style={{ width: '100%' }}
-          onLongPress={handleCopyPass}
+          onLongPress={handlePass}
         >
           <Text style={styles.pass}>{generatedPassword}</Text>
         </Pressable>
@@ -29,7 +36,10 @@ export function PasswordModal({ closeModal, generatedPassword }) {
             <Text style={styles.buttonText}>Close</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.button, {backgroundColor: '#4fa3e8'}]}>
+          <TouchableOpacity
+            style={[styles.button, {backgroundColor: '#4fa3e8'}]}
+            onPress={handlePass}
+          >
             <Text style={styles.buttonText}>Save pass</Text>
           </TouchableOpacity>
         </View>
