@@ -28,7 +28,7 @@ export function Home() {
         <Slider
           style={styles.slider}
           minimumValue={8}
-          maximumValue={42}
+          maximumValue={30}
           minimumTrackTintColor="#58b1e8"
           maximumTrackTintColor="#1295e6"
           thumbTintColor="#def"
@@ -59,7 +59,6 @@ export function Home() {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#252c3d',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'

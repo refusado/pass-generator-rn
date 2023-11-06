@@ -32,10 +32,10 @@ export default function useStorage() {
   const removeItem = async (key, value) => {
     try {
       const saves = await getItems(key);
-      saves.filter(item => item != value);
+      const newSaves = saves.filter(item => item != value);
 
-      await AsyncStorage.setItem(key, JSON.stringify(saves));
-      return saves;
+      await AsyncStorage.setItem(key, JSON.stringify(newSaves));
+      return newSaves;
 
     } catch (error) {
       console.log('Error while removing value', error);

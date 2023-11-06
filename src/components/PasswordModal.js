@@ -10,8 +10,6 @@ export function PasswordModal({ closeModal, generatedPassword }) {
     await saveItem('@passwords', generatedPassword);
 
     closeModal();
-
-    alert('Password copied and saved.');
   }
 
   return (
@@ -95,8 +93,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 8,
     borderRadius: 5
-  },
-  buttonText: {
-
   }
 });

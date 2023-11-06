@@ -1,13 +1,14 @@
 import { useIsFocused } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useStorage from "../../hooks/useStorage";
+import ListItem from "./components/ListItem";
 
 export function Saves() {
-  const focused = useIsFocused();
   const [passwordsList, setPasswordsList] = useState([]);
-  const { getItems } = useStorage();
+  const focused = useIsFocused();
+  const { getItems, removeItem } = useStorage();
 
   useEffect(() => {
     async function loadPasswords() {
@@ -18,16 +19,28 @@ export function Saves() {
     loadPasswords();
   }, [focused]);
 
+  async function deletePassword(password) {
+    const updatedItems = await removeItem('@passwords', password);
+    setPasswordsList(updatedItems);
+  }
+
+  const renderItem = ({ item }) => <ListItem value={item} handleDelete={() => deletePassword(item)} />;
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
-        <Text>
-          Passwords
+        <Text style={styles.title}>
+          Saves
         </Text>
       </View>
 
       <View style={styles.container}>
-        { passwordsList.map((value) => <Text>{value}</Text>) }
+        <FlatList
+          style={styles.list}
+          data={passwordsList}
+          keyExtractor={(value) => String(value)}
+          renderItem={renderItem}
+        />
       </View>
     </SafeAreaView>
   );
@@ -35,10 +48,16 @@ export function Saves() {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'red',
+    backgroundColor: '#cddef7',
+    padding: 16,
+    paddingTop: 40
+  },
+  title: {
+    fontSize: 18
   },
 
   container: {
-    backgroundColor: 'blue',
-  }
+    flex: 1,
+    padding: 16
+  },
 });
