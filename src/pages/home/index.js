@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Modal } from "react-na
 import Slider from "@react-native-community/slider"
 import { useState } from "react";
 import { PasswordModal } from "../../components/PasswordModal";
-import generatePassword from "../../GeneratorAlgorithm";
+import generatePassword from "../../utils/GeneratorAlgorithm";
 
 export function Home() {
   const [passValue, setPassValue] = useState();
@@ -19,7 +19,7 @@ export function Home() {
     <View style={styles.container}>
       <Text style={styles.title}>Pass Generator</Text>
       <Image
-        source={require('../../assets/password-icon.png')}
+        source={require('../../../assets/password-icon.png')}
         style={styles.logo}
       />
 
