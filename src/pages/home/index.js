@@ -65,10 +65,9 @@ const styles = StyleSheet.create({
   },
   title: {
     width: '100%',
-    backgroundColor: '#b9cdeb',
-    color: '#191f21',
-    fontSize: 16,
-    marginBottom: 16,
+    color: '#c6d9f5',
+    fontSize: 22,
+    marginBottom: 12,
     paddingHorizontal: 16,
     paddingVertical: 4,
     textAlign: 'center'
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 120,
     height: 120,
-    marginBottom: 40
+    marginBottom: 72
   },
 
   main: {
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 24,
     width: '88%',
-    borderRadius: 6
+    borderRadius: 4
   },
   mainText: {
     color: '#d7e6fc',
@@ -101,13 +100,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     borderRadius: 999,
-    backgroundColor: '#4b8cdb',
+    backgroundColor: '#339ff1',
     alignSelf: 'center',
     paddingVertical: 10,
     elevation: 1
   },
   textButton: {
     fontSize: 16,
-    color: '#191f21',
+    color: '#11191d',
   }
 });

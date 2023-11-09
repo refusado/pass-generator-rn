@@ -34,6 +34,8 @@ export function Saves() {
         </Text>
       </View>
 
+      <Text style={styles.textInfo}>Click and hold the password to delete</Text>
+
       <View style={styles.container}>
         <FlatList
           style={styles.list}
@@ -53,11 +55,15 @@ const styles = StyleSheet.create({
     paddingTop: 40
   },
   title: {
-    fontSize: 18
+    fontSize: 18,
   },
-
+  textInfo: {
+    color: '#c5d4eb',
+    textAlign: 'center',
+    fontSize: 13,
+    margin: 16
+  },
   container: {
     flex: 1,
-    padding: 16
   },
 });

@@ -5,10 +5,9 @@ export default function ListItem({ value, handleDelete }) {
     <Pressable
       onLongPress={handleDelete}
       style={styles.container}
+      android_ripple={{ color: '#ff313144' }}
     >
-      <Text style={styles.text}>
-        {value}
-      </Text>
+      <Text style={styles.text}>{value}</Text>
     </Pressable>
   )
 }
@@ -18,17 +17,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    backgroundColor: 'blue',
+    marginHorizontal: 16,
     marginBottom: 16,
     paddingHorizontal: 12,
-    paddingVertical: 8
-  },
-  buttonText: {
-    fontSize: 18,
-    backgroundColor: 'yellow',
-    color: 'red',
+    paddingVertical: 8,
+    backgroundColor: '#ddeeff44',
+    borderRadius: 2
   },
   text: {
-    color: 'white',
+    color: '#c9dbf6'
   }
 });
