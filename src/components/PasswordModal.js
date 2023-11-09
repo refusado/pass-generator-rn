@@ -5,10 +5,12 @@ import useStorage from "../hooks/useStorage";
 export function PasswordModal({ closeModal, generatedPassword }) {
   const { saveItem } = useStorage();
 
-  const handlePass = async () => {
+  const copyPass = async () => {
     await Clipboard.setStringAsync(generatedPassword);
-    await saveItem('@passwords', generatedPassword);
+  }
 
+  const savePass = async () => {
+    await saveItem('@passwords', generatedPassword);
     closeModal();
   }
 
@@ -19,7 +21,7 @@ export function PasswordModal({ closeModal, generatedPassword }) {
 
         <Pressable
           style={{ width: '100%' }}
-          onLongPress={handlePass}
+          onLongPress={copyPass}
         >
           <Text style={styles.pass}>{generatedPassword}</Text>
         </Pressable>
@@ -36,7 +38,7 @@ export function PasswordModal({ closeModal, generatedPassword }) {
 
           <TouchableOpacity
             style={[styles.button, {backgroundColor: '#4fa3e8'}]}
-            onPress={handlePass}
+            onPress={savePass}
           >
             <Text style={styles.buttonText}>Save pass</Text>
           </TouchableOpacity>

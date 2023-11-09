@@ -1,6 +1,8 @@
-import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { PixelRatio, Pressable, StyleSheet, Text, View } from "react-native";
+
+const fontScale = PixelRatio.getFontScale();
 
 export default function ListItem({ value, handleDelete }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,15 +15,15 @@ export default function ListItem({ value, handleDelete }) {
     >
       {isVisible ? 
         <Text style={styles.text}>{value}</Text> :
-        <View style={[styles.censoredText, { width: value.length * 9 }]} />}
+        <View style={[styles.censoredText, { width: value.length * 8.5 * fontScale }]} />}
 
       <Pressable
         style={styles.eyeButton}
         onPress={() => setIsVisible((prev) => !prev)}
       >
         {isVisible ? 
-          <Feather name="eye" size={24} color="#3b82c9" /> :
-          <Feather name="eye-off" size={24} color="#3b82c9" />}
+          <Feather name="eye-off" size={24} color="#336fac" /> :
+          <Feather name="eye" size={24} color="#336fac" />}
       </Pressable>
     </Pressable>
   )
@@ -29,6 +31,7 @@ export default function ListItem({ value, handleDelete }) {
 
 const styles = StyleSheet.create({
   container: {
+    height: 32 * fontScale,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -41,19 +44,18 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#c9dbf6',
-    marginHorizontal: 12,
-    marginVertical: 8,
+    marginHorizontal: 8,
+    fontSize: 13 * fontScale
   },
   censoredText: {
     backgroundColor: '#ddeeff44',
-    height: 21,
+    height: 18 * fontScale,
     borderRadius: 999,
-    marginHorizontal: 12,
-    marginVertical: 8,
+    marginHorizontal: 8,
   },
   eyeButton: {
-    paddingLeft: 24,
-    paddingRight: 12,
+    backgroundColor: '#252c3d55',
+    paddingHorizontal: 14,
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center'
