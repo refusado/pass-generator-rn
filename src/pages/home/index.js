@@ -4,7 +4,7 @@ import { useState } from "react";
 import { PasswordModal } from "../../components/PasswordModal";
 import generatePassword from "../../utils/GeneratorAlgorithm";
 
-export function Home() {
+export function Home({ navigation }) {
   const [passValue, setPassValue] = useState();
   const [charsSize, setCharsSize] = useState(14);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -50,6 +50,7 @@ export function Home() {
       >
         <PasswordModal 
           closeModal={() => setIsModalVisible(false)}
+          changeScreen={() => navigation.navigate('Saves')}
           generatedPassword={passValue}
         />
       </Modal>

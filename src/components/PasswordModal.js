@@ -1,17 +1,31 @@
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import useStorage from "../hooks/useStorage";
+import Toast from "react-native-toast-message";
 
-export function PasswordModal({ closeModal, generatedPassword }) {
+export function PasswordModal({ closeModal, generatedPassword, changeScreen }) {
   const { saveItem } = useStorage();
 
   const copyPass = async () => {
     await Clipboard.setStringAsync(generatedPassword);
+
+    Toast.show({
+      text1: `Password "${generatedPassword}" copied`,
+      type: 'info',
+      position: 'bottom',
+    });
   }
 
   const savePass = async () => {
     await saveItem('@passwords', generatedPassword);
     closeModal();
+
+    Toast.show({
+      type: 'info',
+      text1: 'Password saved',
+      position: 'bottom',
+    });
+    changeScreen();
   }
 
   return (
@@ -44,6 +58,7 @@ export function PasswordModal({ closeModal, generatedPassword }) {
           </TouchableOpacity>
         </View>
       </View>
+      <Toast />
     </View>
   );
 }

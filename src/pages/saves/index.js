@@ -4,6 +4,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useStorage from "../../hooks/useStorage";
 import ListItem from "./components/ListItem";
+import Toast from "react-native-toast-message";
 
 export function Saves() {
   const [passwordsList, setPasswordsList] = useState([]);
@@ -22,6 +23,11 @@ export function Saves() {
   async function deletePassword(password) {
     const updatedItems = await removeItem('@passwords', password);
     setPasswordsList(updatedItems);
+    Toast.show({
+      type: 'info',
+      text1: `Password "${password}" deleted`,
+      position: 'bottom',
+    });
   }
 
   const renderItem = ({ item }) => <ListItem value={item} handleDelete={() => deletePassword(item)} />;
