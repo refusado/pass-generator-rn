@@ -1,16 +1,40 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, Modal } from "react-native"
-import Slider from "@react-native-community/slider"
 import { useState } from "react";
 import { PasswordModal } from "../../components/PasswordModal";
 import generatePassword from "../../utils/GeneratorAlgorithm";
+import { PasswordOptions } from "../../components/PasswordOptions";
+import Toast from "react-native-toast-message";
 
 export function Home({ navigation }) {
   const [passValue, setPassValue] = useState();
-  const [charsSize, setCharsSize] = useState(14);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const [passOptions, setPassOptions] = useState({
+    length: 14,
+    uppercase: true,
+    lowercase: false,
+    numbers: true,
+    specials: false
+  });
+
   const handleButtonClick = () => {
-    const pass = generatePassword(charsSize);
+    const hasAnySelected = Object.values(passOptions).some((value) => {
+      if (typeof(value) == 'boolean') {
+        return value
+      }
+    })
+
+    if (!hasAnySelected) {
+      Toast.show({
+        type: 'error',
+        text1: 'Select at least one password generation option',
+        position: 'bottom'
+      });
+
+      return
+    }
+
+    const pass = generatePassword({ ...passOptions });
     setPassValue(pass);
     setIsModalVisible(true);
   }
@@ -24,17 +48,9 @@ export function Home({ navigation }) {
       />
 
       <View style={styles.main}>
-        <Text style={styles.mainText}>{charsSize} Characters</Text>
-        <Slider
-          style={styles.slider}
-          minimumValue={8}
-          maximumValue={30}
-          minimumTrackTintColor="#58b1e8"
-          maximumTrackTintColor="#1295e6"
-          thumbTintColor="#def"
-          value={charsSize}
-          onValueChange={(value) => setCharsSize(value.toFixed(0))}
-        />
+        <Text style={styles.mainText}>{passOptions.length} Characters</Text>
+
+        <PasswordOptions passOptions={passOptions} setPassOptions={setPassOptions} />
 
         <TouchableOpacity style={styles.button} onPress={handleButtonClick}>
           <Text style={styles.textButton}>
@@ -92,10 +108,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold'
-  },
-  slider: {
-    height: 56,
-    marginVertical: 16
   },
   button: {
     width: '100%',

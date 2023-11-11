@@ -1,4 +1,4 @@
-export default function generatePassword(length = 14, uppercase = 1, lowercase = 1, numbers = 1, specials = 1) {
+export default function generatePassword({ length = 14, uppercase = 1, lowercase = 1, numbers = 1, specials = 1 }) {
   let characters = '';
   let password = '';
 
