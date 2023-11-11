@@ -4,6 +4,10 @@ import { Saves } from './pages/saves';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
+const tabOptions = {
+  headerShown: false,
+  tabBarShowLabel: false,
+}
 
 export function Routes() {
   return (
@@ -22,14 +26,13 @@ export function Routes() {
         name='Home'
         component={Home}
         options={{
-          headerShown: false,
-          tabBarShowLabel: false,
+          ...tabOptions,
           tabBarIcon: ({ focused, color, size }) => {
             if (focused) {
               return <Ionicons size={size} color='#3b6aa4' name='home' />
-            } else {
-              return <Ionicons size={size} color={color} name='home-outline' />
             }
+
+            return <Ionicons size={size} color={color} name='home-outline' />
           }
         }}
       />
@@ -38,14 +41,13 @@ export function Routes() {
         name='Saves'
         component={Saves}
         options={{
-          headerShown: false,
-          tabBarShowLabel: false,
+          ...tabOptions,
           tabBarIcon: ({ focused, color, size }) => {
             if (focused) {
               return <Ionicons size={size} color='#3b6aa4' name='list' />
-            } else {
-              return <Ionicons size={size} color={color} name='list-outline' />
             }
+
+            return <Ionicons size={size} color={color} name='list-outline' />
           }
         }}
       />

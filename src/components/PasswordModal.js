@@ -10,7 +10,7 @@ export function PasswordModal({ closeModal, generatedPassword, changeScreen }) {
     await Clipboard.setStringAsync(generatedPassword);
 
     Toast.show({
-      text1: `Password "${generatedPassword}" copied`,
+      text1: `Password copied`,
       type: 'info',
       position: 'bottom',
     });
@@ -22,7 +22,7 @@ export function PasswordModal({ closeModal, generatedPassword, changeScreen }) {
 
     Toast.show({
       type: 'info',
-      text1: 'Password saved',
+      text1: `Password "${generatedPassword}" saved`,
       position: 'bottom',
     });
     changeScreen();
@@ -58,7 +58,6 @@ export function PasswordModal({ closeModal, generatedPassword, changeScreen }) {
           </TouchableOpacity>
         </View>
       </View>
-      <Toast />
     </View>
   );
 }
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
     marginVertical: 24,
     backgroundColor: '#00000024',
   },
-
+  
   buttonsContainer: {
     flexDirection: 'row',
     gap: 8,

@@ -24,19 +24,19 @@ export function Home({ navigation }) {
       }
     })
 
-    if (!hasAnySelected) {
-      Toast.show({
-        type: 'error',
-        text1: 'Select at least one password generation option',
-        position: 'bottom'
-      });
+    if (hasAnySelected) {
+      const pass = generatePassword({ ...passOptions });
+      setPassValue(pass);
+      setIsModalVisible(true);
 
       return
     }
 
-    const pass = generatePassword({ ...passOptions });
-    setPassValue(pass);
-    setIsModalVisible(true);
+    Toast.show({
+      type: 'error',
+      text1: 'Select at least one password generation option',
+      position: 'bottom'
+    });
   }
 
   return (
@@ -69,6 +69,7 @@ export function Home({ navigation }) {
           changeScreen={() => navigation.navigate('Saves')}
           generatedPassword={passValue}
         />
+        <Toast />
       </Modal>
     </View>
   )

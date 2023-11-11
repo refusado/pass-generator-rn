@@ -25,7 +25,7 @@ export function Saves() {
     setPasswordsList(updatedItems);
     Toast.show({
       type: 'info',
-      text1: `Password "${password}" deleted`,
+      text1: `Password deleted`,
       position: 'bottom',
     });
   }
