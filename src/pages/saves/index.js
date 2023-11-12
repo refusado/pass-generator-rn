@@ -5,8 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import useStorage from "../../hooks/useStorage";
 import ListItem from "./components/ListItem";
 import Toast from "react-native-toast-message";
+import EmptyList from "./components/EmptyList";
 
-export function Saves() {
+export function Saves({ navigation }) {
   const [passwordsList, setPasswordsList] = useState([]);
   const focused = useIsFocused();
   const { getItems, removeItem } = useStorage();
@@ -40,16 +41,18 @@ export function Saves() {
         </Text>
       </View>
 
-      <Text style={styles.textInfo}>Click and hold the password to delete</Text>
-
-      <View style={styles.container}>
+      {!passwordsList.length ?
+      <EmptyList backToHome={() => navigation.navigate('Home')} /> :
+      <>
+        <Text style={styles.textInfo}>Click and hold the password to delete</Text>
         <FlatList
           style={styles.list}
           data={passwordsList}
           keyExtractor={(value) => String(value)}
           renderItem={renderItem}
         />
-      </View>
+      </>
+      }
     </SafeAreaView>
   );
 }
@@ -68,8 +71,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 13,
     margin: 16
-  },
-  container: {
-    flex: 1,
-  },
+  }
 });

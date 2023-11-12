@@ -95,15 +95,15 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     borderRadius: 999,
-    backgroundColor: '#197ac4',
+    backgroundColor: '#26618f',
     alignSelf: 'center',
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 32,
     elevation: 3
   },
   textButton: {
     fontSize: 16,
-    color: '#d1e8f7',
+    color: '#cce4f5',
     textTransform: 'uppercase'
   }
 });

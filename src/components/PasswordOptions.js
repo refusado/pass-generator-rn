@@ -47,12 +47,12 @@ export function PasswordOptions({ passOptions, setPassOptions }) {
       </View>
 
       <Slider
-        style={{ marginVertical: 16 }}
+        style={{ marginVertical: 20 }}
         minimumValue={charsSize.min}
         maximumValue={charsSize.max}
-        minimumTrackTintColor="#58b1e8"
-        maximumTrackTintColor="#1295e6"
-        thumbTintColor="#def"
+        minimumTrackTintColor="#26a2f0"
+        maximumTrackTintColor="#ffffff"
+        thumbTintColor="#d2e4f5"
         value={passOptions.length}
         onValueChange={handleSlideChange}
       />
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4c5c73',
     paddingHorizontal: 16,
     paddingVertical: 24,
-    width: '78%',
+    width: '76%',
     borderRadius: 6,
     marginBottom: 24
   },
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
   button: {
     width: '50%',
     paddingVertical: 10,
-    backgroundColor: '#287cbc',
-    borderWidth: 0.75,
-    borderColor: '#1a70b3',
+    backgroundColor: '#20689e',
+    borderWidth: 0.6,
+    borderColor: '#34709e',
     opacity: 0.5
   },
   checked: {
