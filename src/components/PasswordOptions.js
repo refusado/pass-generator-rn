@@ -1,5 +1,5 @@
 import Slider from "@react-native-community/slider";
-import { Pressable, Text } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const charsSize = {
   max: 30,
@@ -9,8 +9,8 @@ const charsSize = {
 const charsOptions = [
   { label: 'Lowercase', name: 'lowercase' },
   { label: 'Uppercase', name: 'uppercase' },
-  { label: 'Numbers', name: 'numbers' },
-  { label: 'Specials', name: 'specials' }
+  { label: 'Specials', name: 'specials' },
+  { label: 'Numbers', name: 'numbers' }
 ];
 
 export function PasswordOptions({ passOptions, setPassOptions }) {
@@ -27,21 +27,27 @@ export function PasswordOptions({ passOptions, setPassOptions }) {
   }
 
   const buttons = charsOptions.map(({ label, name }) => {
+    const isChecked = passOptions[name];
+
     return (
       <Pressable 
         key={name}
-        style={{backgroundColor: passOptions[name] ? 'green' : 'red'}}
+        style={[styles.button, isChecked ? styles.checked : '']}
         onPress={() => handleCheckChange(name)}
       >
-        <Text>{label}</Text>
+        <Text style={styles.text}>{label}</Text>
       </Pressable>
     )
   })
 
-
   return (
-    <>
+    <View style={styles.container}>
+      <View style={styles.buttonsWrapper}>
+        {[ ...buttons ]}
+      </View>
+
       <Slider
+        style={{ marginVertical: 16 }}
         minimumValue={charsSize.min}
         maximumValue={charsSize.max}
         minimumTrackTintColor="#58b1e8"
@@ -51,7 +57,39 @@ export function PasswordOptions({ passOptions, setPassOptions }) {
         onValueChange={handleSlideChange}
       />
 
-      {[ ...buttons ]}
-    </>
+      <Text style={styles.text}>{passOptions.length} Characters</Text>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#4c5c73',
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+    width: '78%',
+    borderRadius: 6,
+    marginBottom: 24
+  },
+  buttonsWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    borderRadius: 8
+  },
+  button: {
+    width: '50%',
+    paddingVertical: 10,
+    backgroundColor: '#287cbc',
+    borderWidth: 0.75,
+    borderColor: '#1a70b3',
+    opacity: 0.5
+  },
+  checked: {
+    opacity: 1
+  },
+  text: {
+    color: '#d1e8f7',
+    textAlign: 'center'
+  }
+});

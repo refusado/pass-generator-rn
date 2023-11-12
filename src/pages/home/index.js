@@ -47,17 +47,13 @@ export function Home({ navigation }) {
         style={styles.logo}
       />
 
-      <View style={styles.main}>
-        <Text style={styles.mainText}>{passOptions.length} Characters</Text>
+      <PasswordOptions passOptions={passOptions} setPassOptions={setPassOptions} />
 
-        <PasswordOptions passOptions={passOptions} setPassOptions={setPassOptions} />
-
-        <TouchableOpacity style={styles.button} onPress={handleButtonClick}>
-          <Text style={styles.textButton}>
-            Generate password
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={styles.button} onPress={handleButtonClick}>
+        <Text style={styles.textButton}>
+          Generate password
+        </Text>
+      </TouchableOpacity>
 
       <Modal
         visible={isModalVisible}
@@ -92,35 +88,22 @@ const styles = StyleSheet.create({
   },
   logo: {
     resizeMode: 'contain',
-    width: 120,
-    height: 120,
+    width: 108,
+    height: 108,
     marginBottom: 72
   },
-
-  main: {
-    backgroundColor: '#ddeeff44',
-    paddingHorizontal: 16,
-    paddingVertical: 24,
-    width: '88%',
-    borderRadius: 4
-  },
-  mainText: {
-    color: '#d7e6fc',
-    textAlign: 'center',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
   button: {
-    width: '100%',
     alignItems: 'center',
     borderRadius: 999,
-    backgroundColor: '#339ff1',
+    backgroundColor: '#197ac4',
     alignSelf: 'center',
-    paddingVertical: 10,
-    elevation: 1
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    elevation: 3
   },
   textButton: {
     fontSize: 16,
-    color: '#11191d',
+    color: '#d1e8f7',
+    textTransform: 'uppercase'
   }
 });
